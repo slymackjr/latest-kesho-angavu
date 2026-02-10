@@ -1,72 +1,113 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, GraduationCap, DollarSign, AlertTriangle } from "lucide-react"
+import { Target, GraduationCap, TrendingUp, Heart } from "lucide-react"
 
 const impactAreas = [
   {
-    icon: Heart,
-    title: "HEALTH",
-    description: "Building healthy communities.",
+    icon: Target,
+    title: "ENTREPRENEURSHIP",
+    description: "Building self-reliant futures through hands-on skills.",
+    image: "/assets/image1.JPG",
   },
   {
     icon: GraduationCap,
-    title: "EDUCATION",
-    description: "Removing obstacles to Education.",
+    title: "DIGITAL EMPOWERMENT",
+    description: "Bridging the digital divide with practical tech skills.",
+    image: "/assets/image2.JPG",
   },
   {
-    icon: DollarSign,
-    title: "LIVELIHOODS",
-    description: "Planting seeds for the future.",
+    icon: TrendingUp,
+    title: "FINANCIAL LITERACY",
+    description: "Fostering financial independence and responsibility.",
+    image: "/assets/image3.JPG",
   },
   {
-    icon: AlertTriangle,
-    title: "EMERGENCY",
-    description: "Providing relief and rebuilding communities.",
+    icon: Heart,
+    title: "HEALTH & WELLNESS",
+    description: "Promoting holistic health education and access.",
+    image: "/assets/image4.JPG",
   },
 ]
 
 export function ImpactAreas() {
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left side - Image and description */}
+
+        <div className="grid lg:grid-cols-2 gap-10">
+
+          {/* LEFT SIDE */}
+
           <div>
-            <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-6">
+            <div className="relative h-[360px] rounded-2xl overflow-hidden mb-6">
               <Image
-                src="/images/adra-in-action.jpg"
-                alt="ADRA in Action"
+                src="/assets/image7.JPG"
+                alt="Kesho Angavu youth empowerment in action - holistic training programs for Tanzanian youth"
                 fill
                 className="object-cover"
               />
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-              ADRA in Action
+
+            <h2 className="text-3xl font-bold mb-3">
+              Kesho Angavu in Action
             </h2>
-            <p className="text-muted-foreground mb-4">
-              We work in 4 key impact areas to address the root causes of poverty, creating lasting change
-              in communities around the world.
+
+            <p className="text-muted-foreground mb-4 max-w-md">
+              We work in 4 key impact areas to empower Tanzania's out-of-school youth,
+              creating sustainable change through holistic skills development.
             </p>
-            <Link href="/impact" className="text-primary font-semibold hover:underline">
-              Learn More
+
+            <Link
+              href="/programs"
+              className="text-primary font-semibold hover:underline"
+            >
+              Explore All Programs
             </Link>
           </div>
 
-          {/* Right side - Impact area cards */}
-          <div className="grid grid-cols-2 gap-4">
+          {/* RIGHT SIDE CARDS */}
+
+          <div className="grid grid-cols-2 gap-5">
+
             {impactAreas.map((area) => (
               <Link
                 key={area.title}
-                href="/impact"
-                className="group p-6 border border-border rounded-xl hover:border-primary hover:shadow-md transition-all text-center"
+                href={`/programs#${area.title.toLowerCase().replace(/\s+/g, '-')}`}
+                className="group relative rounded-xl overflow-hidden border min-h-[190px] flex items-center justify-center bg-white transition-all duration-300 hover:border-primary/30"
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <area.icon className="h-8 w-8 text-primary" />
+
+                {/* Hover Image ONLY */}
+
+                <Image
+                  src={area.image}
+                  alt=""
+                  fill
+                  className="object-cover opacity-0 scale-110 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                />
+
+                {/* Frosted white overlay */}
+
+                <div className="absolute inset-0 bg-white/90 group-hover:bg-white/70 transition-colors duration-500 pointer-events-none" />
+
+                {/* Content */}
+
+                <div className="relative z-10 text-center p-6 transition-transform duration-300 group-hover:-translate-y-1">
+
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                    <area.icon className="h-7 w-7 text-primary" />
+                  </div>
+
+                  <h3 className="font-bold mb-2">{area.title}</h3>
+
+                  <p className="text-sm text-muted-foreground">
+                    {area.description}
+                  </p>
+
                 </div>
-                <h3 className="font-bold text-foreground mb-2">{area.title}</h3>
-                <p className="text-sm text-muted-foreground">{area.description}</p>
+
               </Link>
             ))}
+
           </div>
         </div>
       </div>

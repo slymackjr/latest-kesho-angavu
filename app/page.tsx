@@ -20,8 +20,8 @@ export default function HomePage() {
         <MissionSection />
         <ImpactStats />
         <ImpactAreas />
-        <NewsSection />
-        <GiftCatalog />
+        {/* <NewsSection /> */}
+        {/* <GiftCatalog /> */}
       </main>
       <Footer />
     </div>

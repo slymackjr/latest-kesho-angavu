@@ -1,33 +1,40 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export function MissionSection() {
   return (
     <section className="py-12 md:py-16 text-center">
       <div className="container mx-auto px-4 max-w-3xl">
-        <div className="mb-6">
-          <svg
-            viewBox="0 0 100 100"
-            className="h-16 w-16 mx-auto text-primary"
-            fill="currentColor"
-          >
-            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" />
-            <path d="M50 15 C30 15 20 30 20 45 C20 60 35 75 50 85 C65 75 80 60 80 45 C80 30 70 15 50 15" fill="none" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M35 50 L50 35 L65 50 M50 35 L50 65" fill="none" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
+        <div className="relative h-20 w-20 mx-auto mb-6">
+          <Image
+            src="/assets/angavu-logo.svg"
+            alt="Kesho Angavu Logo - Brighter Tomorrow"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">
-          We believe in a world free from poverty
+          We believe in a Tanzania where every youth thrives
         </h2>
         <p className="text-muted-foreground mb-6">
-          Since 1984, we&apos;ve been serving humanity so all may live as God intended.
+          Since 2020, we've been empowering Tanzania's out-of-school youth with skills, values, and purpose.
           <br />
-          Here&apos;s what that looked like in 2024.
+          Here's the impact we're creating together.
         </p>
         <Link
-          href="/leadership"
-          className="text-primary font-semibold hover:underline"
+          href="/about"
+          className="inline-flex items-center gap-2 text-primary font-semibold hover:underline group"
         >
-          Our Story
+          Our Journey
+          <svg 
+            className="w-4 h-4 transition-transform group-hover:translate-x-1" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
         </Link>
       </div>
     </section>
